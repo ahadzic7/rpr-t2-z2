@@ -21,6 +21,9 @@ public class Interval {
         this.gornjaUkljucena = false;
     }
 
+    public boolean isNull () {
+        return  (donjaGranica < EPS && gornjaGranica < EPS && !donjaUkljucena && !gornjaUkljucena);
+    }
 
 
 }
