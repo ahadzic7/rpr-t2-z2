@@ -25,5 +25,9 @@ public class Interval {
         return  (donjaGranica < EPS && gornjaGranica < EPS && !donjaUkljucena && !gornjaUkljucena);
     }
 
+    public boolean isIn (double tacka) {
+        return (donjaGranica < tacka && gornjaGranica > tacka);
+    }
+
 
 }
