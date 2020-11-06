@@ -14,5 +14,13 @@ public class Interval {
         this.gornjaUkljucena = gornjUkljucena;
     }
 
+    public Interval() {
+        this.donjaGranica = 0;
+        this.gornjaGranica = 0;
+        this.donjaUkljucena = false;
+        this.gornjaUkljucena = false;
+    }
+
+
 
 }
