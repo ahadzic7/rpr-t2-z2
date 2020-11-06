@@ -29,5 +29,20 @@ public class Interval {
         return (donjaGranica < tacka && gornjaGranica > tacka);
     }
 
+    public Interval intersect (final Interval interval2) {
+        if (isIn(interval2.donjaGranica)) {
+            if (isIn(interval2.gornjaGranica))
+                return interval2;
+            else
+                return new Interval(interval2.donjaGranica, gornjaGranica, interval2.donjaUkljucena, gornjaUkljucena);
+        }
+        else if (isIn(interval2.gornjaGranica))
+            return new Interval(donjaGranica, interval2.gornjaGranica, donjaUkljucena, interval2.gornjaUkljucena);
+
+        else if (interval2.isIn(gornjaGranica))
+            return this;
+        return new Interval();
+    }
+
 
 }
