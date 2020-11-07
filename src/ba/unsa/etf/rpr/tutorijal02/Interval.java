@@ -8,7 +8,23 @@ public class Interval {
     private final static double EPS = 1e-6;
 
     private static boolean jednakost(double x, double y) {
-        return (abs(x) - abs(y)) <= (abs(x) + abs(y)) * EPS;
+        return ((abs(x - y)) <= ((abs(x) + abs(y)) * EPS));
+    }
+
+    public double getDonjaGranica() {
+        return donjaGranica;
+    }
+
+    public double getGornjaGranica() {
+        return gornjaGranica;
+    }
+
+    public boolean isDonjaUkljucena() {
+        return donjaUkljucena;
+    }
+
+    public boolean isGornjaUkljucena() {
+        return gornjaUkljucena;
     }
 
     public Interval(double donjaGranica, double gornjaGranica, boolean donjaUkljucena, boolean gornjUkljucena) {
@@ -71,7 +87,7 @@ public class Interval {
 
     @Override
     public String toString () {
-        StringBuilder str = new StringBuilder("");
+        StringBuilder str = new StringBuilder();
 
         if (donjaUkljucena)
             str.append("[");
@@ -97,5 +113,15 @@ public class Interval {
     }
 
 
+    @Override
+    public boolean equals (Object objekat) {
+        if (objekat instanceof Interval) {
+            return (jednakost(donjaGranica,((Interval) objekat).getDonjaGranica())
+                    && jednakost(gornjaGranica, ((Interval) objekat).getGornjaGranica())
+                    && donjaUkljucena == ((Interval) objekat).isDonjaUkljucena()
+                    && gornjaUkljucena == ((Interval) objekat).isGornjaUkljucena());
+        }
+        throw new IllegalArgumentException("GRESKA!");
+    }
 
 }
